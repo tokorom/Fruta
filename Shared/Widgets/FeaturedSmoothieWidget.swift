@@ -11,7 +11,7 @@ import Intents
 
 struct FeaturedSmoothieWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "FeaturedSmoothie", provider: Provider(), placeholder: FeaturedSmoothiePlaceholderView()) { entry in
+        StaticConfiguration(kind: "FeaturedSmoothie", provider: Provider()) { entry in
             FeaturedSmoothieEntryView(entry: entry)
         }
         .configurationDisplayName("Featured Smoothie")
@@ -81,7 +81,7 @@ struct FeaturedSmoothieEntryView: View {
                     .aspectRatio(contentMode: .fill)
             )
             .aspectRatio(1, contentMode: .fit)
-            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+            .clipShape(ContainerRelativeShape())
     }
     
     var body: some View {
@@ -121,17 +121,12 @@ struct FeaturedSmoothieEntryView: View {
     }
 }
 
-struct FeaturedSmoothiePlaceholderView: View {
-    var body: some View {
-        FeaturedSmoothieEntryView(entry: .init(date: Date(), smoothie: .berryBlue))
-    }
-}
-
 struct FeaturedSmoothieWidget_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            FeaturedSmoothiePlaceholderView()
+            FeaturedSmoothieEntryView(entry: FeaturedSmoothieWidget.Entry(date: Date(), smoothie: .berryBlue))
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
+                .redacted(reason: .placeholder)
             FeaturedSmoothieEntryView(entry: FeaturedSmoothieWidget.Entry(date: Date(), smoothie: .kiwiCutie))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             FeaturedSmoothieEntryView(entry: FeaturedSmoothieWidget.Entry(date: Date(), smoothie: .thatsBerryBananas))

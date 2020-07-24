@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RewardsCardWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "RewardsCard", provider: Provider(), placeholder: RewardsCardPlaceholderView()) { entry in
+        StaticConfiguration(kind: "RewardsCard", provider: Provider()) { entry in
             RewardsCardEntryView(entry: entry)
         }
         .configurationDisplayName("Rewards Card")
@@ -40,12 +40,6 @@ extension RewardsCardWidget {
     }
 }
 
-struct RewardsCardPlaceholderView: View {
-    var body: some View {
-        RewardsCardEntryView(entry: .init(date: Date(), points: 4))
-    }
-}
-
 public struct RewardsCardEntryView: View {
     var entry: RewardsCardWidget.Entry
     
@@ -66,8 +60,9 @@ public struct RewardsCardEntryView: View {
 struct RewardsCardWidget_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            RewardsCardPlaceholderView()
+            RewardsCardEntryView(entry: .init(date: Date(), points: 4))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
+                .redacted(reason: .placeholder)
             RewardsCardEntryView(entry: .init(date: Date(), points: 8))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             RewardsCardEntryView(entry: .init(date: Date(), points: 2))

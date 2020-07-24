@@ -75,6 +75,9 @@ struct RecipeView: View {
         }
         .background(backgroundColor.edgesIgnoringSafeArea(.all))
         .navigationTitle(smoothie.title)
+        .toolbar {
+            SmoothieFavoriteButton(smoothie: smoothie)
+        }
     }
 }
 
