@@ -21,12 +21,18 @@ struct FeaturedSmoothieWidget: Widget {
 
 extension FeaturedSmoothieWidget {
     struct Provider: TimelineProvider {
-        func snapshot(with context: Context, completion: @escaping (Entry) -> Void) {
+        typealias Entry = FeaturedSmoothieWidget.Entry
+       
+        func placeholder(in context: Context) -> Entry {
+            Entry(date: Date(), smoothie: .berryBlue)
+        }
+    
+        func getSnapshot(in context: Context, completion: @escaping (Entry) -> Void) {
             let entry = Entry(date: Date(), smoothie: .berryBlue)
             completion(entry)
         }
         
-        func timeline(with context: Context, completion: @escaping (Timeline<FeaturedSmoothieWidget.Entry>) -> Void) {
+        func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
             var entries: [Entry] = []
 
             let currentDate = Date()

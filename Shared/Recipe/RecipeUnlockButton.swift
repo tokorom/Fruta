@@ -6,6 +6,7 @@ A button that unlocks all recipes.
 */
 
 import SwiftUI
+import StoreKit
 
 struct RecipeUnlockButton: View {
     var product: Product
@@ -102,6 +103,27 @@ struct RecipeUnlockButton: View {
         .padding(10)
         .accessibilityElement(children: .contain)
         #endif
+    }
+}
+
+extension RecipeUnlockButton {
+    struct Product {
+        var title: String
+        var description: String
+        var availability: Availability
+    }
+    
+    enum Availability {
+        case available(price: NSDecimalNumber, locale: Locale)
+        case unavailable
+    }
+}
+
+extension RecipeUnlockButton.Product {
+    init(for product: SKProduct) {
+        title = product.localizedTitle
+        description = product.localizedDescription
+        availability = .available(price: product.price, locale: product.priceLocale)
     }
 }
 

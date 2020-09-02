@@ -18,5 +18,8 @@ struct FrutaApp: App {
                 .environmentObject(model)
                 .environmentObject(store)
         }
+        .commands {
+            SidebarCommands()
+        }
     }
 }

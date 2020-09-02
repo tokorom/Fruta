@@ -15,7 +15,7 @@ The Fruta sample app leverages [Sign in with Apple](https://developer.apple.com/
 
 ## Configure the Sample Code Project
 
-To build this project, use Xcode 12.0 beta 3 with the iOS 14.0 SDK. The runtime requirement is iOS 14.0 beta 3 or later, or macOS 11.0 beta 3 or later.
+To build this project, use Xcode 12.0 beta 6 with the iOS 14.0 SDK. The runtime requirement is iOS 14.0 beta 6 or later, or macOS 11.0 beta 5 or later.
 
 1. To run on your devices, including on macOS, set your team in the targets’ Signing & Capabilities panes. Xcode manages the provisioning profiles for you.
 2. To run on an iOS or iPadOS device, open the `iOSClip.entitlements` file and update the value of the [Parent Application Identifiers Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_parent-application-identifiers) to match the iOS app's bundle identifier.
@@ -38,6 +38,9 @@ struct FrutaApp: App {
             ContentView()
                 .environmentObject(model)
                 .environmentObject(store)
+        }
+        .commands {
+            SidebarCommands()
         }
     }
 }
@@ -80,7 +83,7 @@ VStack(spacing: 0) {
 ```
 [View in Source](x-source-tag://ActiveCompilationCondition)
 
-For more information, see [Creating an App Clip](https://developer.apple.com/documentation/app_clips/creating_an_app_clip) and [Developing a Great App Clip](https://developer.apple.com/documentation/app_clips/developing_a_great_app_clip).
+For more information, see [Creating an App Clip with Xcode](https://developer.apple.com/documentation/app_clips/creating_an_app_clip_with_xcode) and [Choosing the Right Functionality for Your App Clip](https://developer.apple.com/documentation/app_clips/choosing_the_right_functionality_for_your_app_clip).
 
 ## Create a Widget
 

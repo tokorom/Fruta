@@ -21,11 +21,17 @@ struct RewardsCardWidget: Widget {
 
 extension RewardsCardWidget {
     struct Provider: TimelineProvider {
-        func snapshot(with context: Context, completion: @escaping (Entry) -> Void) {
+        typealias Entry = RewardsCardWidget.Entry
+        
+        func placeholder(in context: Context) -> Entry {
+            Entry(date: Date(), points: 4)
+        }
+    
+        func getSnapshot(in context: Context, completion: @escaping (Entry) -> Void) {
             completion(Entry(date: Date(), points: 4))
         }
         
-        func timeline(with context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
+        func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
             let entry = Entry(date: Date(), points: 4)
             let timeline = Timeline(entries: [entry], policy: .never)
             completion(timeline)

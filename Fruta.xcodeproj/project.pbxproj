@@ -180,11 +180,6 @@
 		E05671EF249692970018307A /* AnimatableFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05671EC249692970018307A /* AnimatableFontModifier.swift */; };
 		E05671F0249692970018307A /* AnimatableFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05671EC249692970018307A /* AnimatableFontModifier.swift */; };
 		E05671F1249692970018307A /* AnimatableFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05671EC249692970018307A /* AnimatableFontModifier.swift */; };
-		E075B29424D4F5F2008E0C31 /* RecipeUnlockButton+Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075B29324D4F5F2008E0C31 /* RecipeUnlockButton+Product.swift */; };
-		E075B29524D4F5F2008E0C31 /* RecipeUnlockButton+Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075B29324D4F5F2008E0C31 /* RecipeUnlockButton+Product.swift */; };
-		E075B29624D4F5F2008E0C31 /* RecipeUnlockButton+Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075B29324D4F5F2008E0C31 /* RecipeUnlockButton+Product.swift */; };
-		E075B29724D4F5F2008E0C31 /* RecipeUnlockButton+Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075B29324D4F5F2008E0C31 /* RecipeUnlockButton+Product.swift */; };
-		E075B29824D4F5F2008E0C31 /* RecipeUnlockButton+Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E075B29324D4F5F2008E0C31 /* RecipeUnlockButton+Product.swift */; };
 		E091DD25249685E1002DB402 /* FrutaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E091DD24249685E1002DB402 /* FrutaModel.swift */; };
 		E091DD26249685E1002DB402 /* FrutaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E091DD24249685E1002DB402 /* FrutaModel.swift */; };
 		E091DD27249685E1002DB402 /* FrutaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E091DD24249685E1002DB402 /* FrutaModel.swift */; };
@@ -352,7 +347,6 @@
 		E05671E0249692600018307A /* CountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountButton.swift; sourceTree = "<group>"; };
 		E05671E6249692800018307A /* StepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
 		E05671EC249692970018307A /* AnimatableFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableFontModifier.swift; sourceTree = "<group>"; };
-		E075B29324D4F5F2008E0C31 /* RecipeUnlockButton+Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeUnlockButton+Product.swift"; sourceTree = "<group>"; };
 		E091DD24249685E1002DB402 /* FrutaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrutaModel.swift; sourceTree = "<group>"; };
 		E091DD2A249685FC002DB402 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		E091DD302496860B002DB402 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -596,7 +590,6 @@
 				E0567198249691060018307A /* RecipeView.swift */,
 				E056719E2496911C0018307A /* MeasurementView.swift */,
 				E05671A4249691320018307A /* MeasuredIngredient.swift */,
-				E075B29324D4F5F2008E0C31 /* RecipeUnlockButton+Product.swift */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -903,7 +896,6 @@
 				E0D712C124967E5800173A38 /* AppTabNavigation.swift in Sources */,
 				E0567175249690840018307A /* SmoothieView.swift in Sources */,
 				E05671B12496915D0018307A /* Ingredient+NutritionFacts.swift in Sources */,
-				E075B29424D4F5F2008E0C31 /* RecipeUnlockButton+Product.swift in Sources */,
 				E05671E1249692600018307A /* CountButton.swift in Sources */,
 				E091DD3724968624002DB402 /* Order.swift in Sources */,
 				E030D936249692C200D2E087 /* CircleToggleStyle.swift in Sources */,
@@ -951,7 +943,6 @@
 				E091DD3F24968642002DB402 /* OrderPlacedView.swift in Sources */,
 				E091DD2D249685FC002DB402 /* Store.swift in Sources */,
 				E05671D1249692280018307A /* CardActionButton.swift in Sources */,
-				E075B29624D4F5F2008E0C31 /* RecipeUnlockButton+Product.swift in Sources */,
 				E030D944249692FC00D2E087 /* Animations.swift in Sources */,
 				E030D93A249692DA00D2E087 /* SquishableButtonStyle.swift in Sources */,
 				E091DD512496868B002DB402 /* PaymentButton.swift in Sources */,
@@ -1004,7 +995,6 @@
 				E056715E249690200018307A /* Smoothie.swift in Sources */,
 				E056719A249691060018307A /* RecipeView.swift in Sources */,
 				E091DD3824968624002DB402 /* Order.swift in Sources */,
-				E075B29524D4F5F2008E0C31 /* RecipeUnlockButton+Product.swift in Sources */,
 				E091DD56249686BE002DB402 /* AppSidebarNavigation.swift in Sources */,
 				E05671A02496911C0018307A /* MeasurementView.swift in Sources */,
 				E05671EE249692970018307A /* AnimatableFontModifier.swift in Sources */,
@@ -1081,7 +1071,6 @@
 				E05671722496906B0018307A /* FavoriteSmoothies.swift in Sources */,
 				E030D93F249692E800D2E087 /* CircleToggleStyle.swift in Sources */,
 				E0567196249690F30018307A /* RecipeUnlockButton.swift in Sources */,
-				E075B29724D4F5F2008E0C31 /* RecipeUnlockButton+Product.swift in Sources */,
 				61FB2FE3249948EB00E39B64 /* RedeemSmoothieButton.swift in Sources */,
 				E0567184249690B30018307A /* SmoothieList.swift in Sources */,
 				E05671AE2496914A0018307A /* Ingredient.swift in Sources */,
@@ -1100,7 +1089,6 @@
 			files = (
 				E091DD532496868B002DB402 /* PaymentButton.swift in Sources */,
 				61FB2FE4249948EB00E39B64 /* RedeemSmoothieButton.swift in Sources */,
-				E075B29824D4F5F2008E0C31 /* RecipeUnlockButton+Product.swift in Sources */,
 				E091DD2F249685FC002DB402 /* Store.swift in Sources */,
 				E030D957249694E500D2E087 /* ContentView.swift in Sources */,
 				E030D94F2496933E00D2E087 /* FeaturedSmoothieWidget.swift in Sources */,
