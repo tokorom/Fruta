@@ -2,7 +2,7 @@
 See LICENSE folder for this sample’s licensing information.
 
 Abstract:
-The single entry point for the Fruta app clip.
+The single entry point for the Fruta App Clip.
 */
 
 import SwiftUI
