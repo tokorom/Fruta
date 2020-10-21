@@ -16,27 +16,24 @@ struct AppSidebarNavigation: View {
     }
 
     @EnvironmentObject private var model: FrutaModel
-    @State private var selection: Set<NavigationItem> = [.menu]
+    @State private var selection: NavigationItem? = .menu
     @State private var presentingRewards = false
     
     var sidebar: some View {
         List(selection: $selection) {
-            NavigationLink(destination: SmoothieMenu()) {
+            NavigationLink(destination: SmoothieMenu(), tag: NavigationItem.menu, selection: $selection) {
                 Label("Menu", systemImage: "list.bullet")
             }
-            .accessibility(label: Text("Menu"))
             .tag(NavigationItem.menu)
             
-            NavigationLink(destination: FavoriteSmoothies()) {
+            NavigationLink(destination: FavoriteSmoothies(), tag: NavigationItem.favorites, selection: $selection) {
                 Label("Favorites", systemImage: "heart")
             }
-            .accessibility(label: Text("Favorites"))
             .tag(NavigationItem.favorites)
         
-            NavigationLink(destination: RecipeList()) {
+            NavigationLink(destination: RecipeList(), tag: NavigationItem.recipes, selection: $selection) {
                 Label("Recipes", systemImage: "book.closed")
             }
-            .accessibility(label: Text("Recipes"))
             .tag(NavigationItem.recipes)
         }
         .overlay(Pocket(presentingRewards: $presentingRewards), alignment: .bottom)
@@ -47,9 +44,11 @@ struct AppSidebarNavigation: View {
         NavigationView {
             sidebar
             
-            Text("Content List")
+            Text("Select a category")
+                .foregroundColor(.secondary)
             
-            Text("Select a Smoothie")
+            Text("Select a smoothie")
+                .foregroundColor(.secondary)
                 .toolbar {
                     SmoothieFavoriteButton(smoothie: nil)
                         .disabled(true)

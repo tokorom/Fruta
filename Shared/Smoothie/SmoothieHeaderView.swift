@@ -57,7 +57,7 @@ struct SmoothieHeaderView: View {
             }
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(backgroundColor.edgesIgnoringSafeArea(.all))
+            .background(backgroundColor.ignoresSafeArea())
         }
     }
     

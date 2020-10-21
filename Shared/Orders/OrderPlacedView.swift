@@ -83,7 +83,7 @@ struct OrderPlacedView: View {
                 blurView
                     .opacity(model.order!.isReady ? 0 : 1)
             }
-            .edgesIgnoringSafeArea(.all)
+            .ignoresSafeArea()
         )
         .animation(.spring(response: 0.25, dampingFraction: 1), value: orderReady)
         .animation(.spring(response: 0.25, dampingFraction: 1), value: model.hasAccount)
@@ -144,7 +144,7 @@ struct OrderPlacedView: View {
             blurView
                 .opacity(orderReady ? 1 : 0)
                 .padding(.bottom, -100)
-                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea()
         )
     }
     

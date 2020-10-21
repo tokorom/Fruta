@@ -15,12 +15,12 @@ The Fruta sample app leverages [Sign in with Apple](https://developer.apple.com/
 
 ## Configure the Sample Code Project
 
-To build this project for iOS 14, use Xcode 12. The runtime requirement is iOS 14. To build this project for macOS 11 Big Sur beta 9, use Xcode 12.2 beta 2.
+To build this project for iOS 14.2 beta 3, use Xcode 12.2 beta 3. The runtime requirement is iOS 14.2 or later. To build this project for macOS 11 Big Sur beta 10, use Xcode 12.2 beta 3.
 
 1. To run on your devices, including on macOS, set your team in the targets’ Signing & Capabilities panes. Xcode manages the provisioning profiles for you.
 2. To run on an iOS or iPadOS device, open the `iOSClip.entitlements` file and update the value of the [Parent Application Identifiers Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_parent-application-identifiers) to match the iOS app's bundle identifier.
 3. To enable the in-app-purchase flow, edit the Fruta iOS "Run" scheme, and select `Configuration.storekit` for StoreKit Configuration.
-4. In the Signing & Capabilities pane for the iOS and iOS Clip targets, remove the example group name from the App Groups section, and add a unique group name. Replace the group name with this new name in line 28 of the `FrutaModel.swift` file.
+4. Make a note of the App Group name suffix on the iOS target's Signing and Capabilities tab in Project Settings. Append this value to the App Group name string in line 27 of `FrutaModel.swift` so it's identical to that on the Signing and Capabilities tab.
 5. The Xcode project includes playgrounds that are configured to run on iOS. To change a playground’s platform, select it in the Project navigator, open the File inspector, and select the desired platform. Next, select the scheme that matches the platform before you build and run the playground.
 
 ## Use SwiftUI to Create a Shared Codebase

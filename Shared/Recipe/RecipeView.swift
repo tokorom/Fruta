@@ -73,7 +73,7 @@ struct RecipeView: View {
             .frame(minWidth: 200, idealWidth: 400, maxWidth: 400)
             .frame(maxWidth: .infinity)
         }
-        .background(backgroundColor.edgesIgnoringSafeArea(.all))
+        .background(backgroundColor.ignoresSafeArea())
         .navigationTitle(smoothie.title)
         .toolbar {
             SmoothieFavoriteButton(smoothie: smoothie)

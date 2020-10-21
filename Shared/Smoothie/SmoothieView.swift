@@ -53,7 +53,7 @@ struct SmoothieView: View {
                 .frame(minWidth: 500, idealWidth: 700, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
             #endif
         }
-        .background(Rectangle().fill(BackgroundStyle()).edgesIgnoringSafeArea(.all))
+        .background(Rectangle().fill(BackgroundStyle()).ignoresSafeArea())
         .navigationTitle(smoothie.title)
         .toolbar {
             SmoothieFavoriteButton(smoothie: smoothie)
@@ -108,7 +108,7 @@ struct SmoothieView: View {
             .accessibility(hidden: selectedIngredientID != nil)
 
             VisualEffectBlur()
-                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea()
                 .opacity(selectedIngredientID != nil ? 1 : 0)
             
             ForEach(smoothie.menuIngredients) { measuredIngredient in

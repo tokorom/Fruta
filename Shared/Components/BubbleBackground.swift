@@ -37,7 +37,7 @@ struct BubbleBackground: View {
             .blendMode(.overlay)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .edgesIgnoringSafeArea(.all)
+        .ignoresSafeArea()
     }
 }
 

@@ -17,7 +17,7 @@ struct SmoothieRow: View {
         #if os(iOS)
         return Metrics(thumbnailSize: 96, cornerRadius: 16, rowPadding: 0, textPadding: 8)
         #else
-        return Metrics(thumbnailSize: 60, cornerRadius: 8, rowPadding: 10, textPadding: 0)
+        return Metrics(thumbnailSize: 60, cornerRadius: 4, rowPadding: 2, textPadding: 0)
         #endif
     }
     

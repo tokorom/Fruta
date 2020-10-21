@@ -47,9 +47,7 @@ struct RewardsView: View {
                 .padding(.horizontal, 20)
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(
-                    blurView.edgesIgnoringSafeArea(.all)
-                )
+                .background(blurView.ignoresSafeArea())
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
             }
         }

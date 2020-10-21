@@ -21,6 +21,7 @@ struct SmoothieFavoriteButton: View {
         Button(action: toggleFavorite) {
             Label("Favorite", systemImage: isFavorite ? "heart.fill" : "heart")
         }
+        .foregroundColor(isFavorite ? .accentColor : nil)
         .accessibility(label: Text("\(isFavorite ? "Remove from" : "Add to") Favorites"))
     }
     
