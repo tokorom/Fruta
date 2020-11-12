@@ -6,7 +6,7 @@ The single entry point for the Fruta app on iOS and macOS.
 */
 
 import SwiftUI
-
+/// - Tag: SingleAppDefinitionTag
 @main
 struct FrutaApp: App {
     @StateObject private var model = FrutaModel()

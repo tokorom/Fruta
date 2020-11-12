@@ -50,7 +50,7 @@ struct SmoothieView: View {
             container
             #else
             container
-                .frame(minWidth: 500, idealWidth: 700, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
+                .frame(minWidth: 500, idealWidth: 700, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
             #endif
         }
         .background(Rectangle().fill(BackgroundStyle()).ignoresSafeArea())

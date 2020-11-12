@@ -42,6 +42,7 @@ struct OrderPlacedView: View {
             .padding(.horizontal, 20)
     }
     
+/// - Tag: ActiveCompilationConditionTag
     var body: some View {
         VStack(spacing: 0) {
             Spacer()

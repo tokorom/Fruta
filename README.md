@@ -13,17 +13,19 @@ The sample app’s Xcode project includes widget extensions that enable users to
 
 The Fruta sample app leverages [Sign in with Apple](https://developer.apple.com/documentation/sign_in_with_apple) and [Apple Pay](https://developer.apple.com/documentation/passkit) to provide a streamlined user experience, and promotes code reuse by bundling shared code and localized assets as [Swift Packages](https://developer.apple.com/documentation/swift_packages).
 
+- Important: This update to the Fruta sample has the following known issues related to how the ingredient card renders. On macOS the ingredient card sometimes appears at a reduced size, and on iOS the ingredient card sometimes disappears when tapped rather than appearing at full-size.
+
 ## Configure the Sample Code Project
 
-To build this project for iOS 14.2 beta 3, use Xcode 12.2 beta 3. The runtime requirement is iOS 14.2 or later. To build this project for macOS 11 Big Sur beta 10, use Xcode 12.2 beta 3.
+To build this project for iOS 14.2, use Xcode 12.2. The runtime requirement is iOS 14.2 or later. To build this project for macOS 11, use Xcode 12.2.
 
 1. To run on your devices, including on macOS, set your team in the targets’ Signing & Capabilities panes. Xcode manages the provisioning profiles for you.
 2. To run on an iOS or iPadOS device, open the `iOSClip.entitlements` file and update the value of the [Parent Application Identifiers Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_parent-application-identifiers) to match the iOS app's bundle identifier.
-3. To enable the in-app-purchase flow, edit the Fruta iOS "Run" scheme, and select `Configuration.storekit` for StoreKit Configuration.
-4. Make a note of the App Group name suffix on the iOS target's Signing and Capabilities tab in Project Settings. Append this value to the App Group name string in line 27 of `FrutaModel.swift` so it's identical to that on the Signing and Capabilities tab.
+3. Make a note of the App Group name suffix on the iOS target's Signing and Capabilities tab in Project Settings. Append this value to the App Group name string in line 27 of `FrutaModel.swift` so it's identical to that on the Signing and Capabilities tab.
+4. To enable the in-app-purchase flow, edit the Fruta iOS "Run" scheme, and select `Configuration.storekit` for StoreKit Configuration.
 5. The Xcode project includes playgrounds that are configured to run on iOS. To change a playground’s platform, select it in the Project navigator, open the File inspector, and select the desired platform. Next, select the scheme that matches the platform before you build and run the playground.
 
-## Use SwiftUI to Create a Shared Codebase
+## Create a Shared Codebase in SwiftUI
 
 To create a single app definition that works for multiple platforms, the project defines a structure that conforms to the [App](https://developer.apple.com/documentation/swiftui/app) protocol. Because the `@main` attribute precedes the structure definition, the system recognizes the structure as the entry point into the app. Its computed body property returns a [WindowGroup](https://developer.apple.com/documentation/swiftui/windowgroup) scene that contains the view hierarchy displayed by the app to the user. SwiftUI manages the presentation of the scene and its contents in a platform-appropriate manner.
 
@@ -45,7 +47,7 @@ struct FrutaApp: App {
     }
 }
 ```
-[View in Source](x-source-tag://SingleAppDefinition)
+[View in Source](x-source-tag://SingleAppDefinitionTag)
 
 For more information, see [App Structure and Behavior](https://developer.apple.com/documentation/swiftui/app-structure-and-behavior).
 
@@ -81,7 +83,7 @@ VStack(spacing: 0) {
     #endif
 }
 ```
-[View in Source](x-source-tag://ActiveCompilationCondition)
+[View in Source](x-source-tag://ActiveCompilationConditionTag)
 
 For more information, see [Creating an App Clip with Xcode](https://developer.apple.com/documentation/app_clips/creating_an_app_clip_with_xcode) and [Choosing the Right Functionality for Your App Clip](https://developer.apple.com/documentation/app_clips/choosing_the_right_functionality_for_your_app_clip).
 

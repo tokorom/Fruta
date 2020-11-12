@@ -236,13 +236,13 @@ extension Ingredient {
         name: "Strawberry",
         title: CardTitle(
             color: Color.white,
-            offset: CGSize(width: 30, height: -5),
+            offset: CGSize(width: 35, height: -5),
             blendMode: .softLight,
             opacity: 0.7,
             fontSize: 30
         ),
         thumbnailCrop: Crop(scale: 2.5),
-        cardCrop: Crop(xOffset: -120, scale: 1.35)
+        cardCrop: Crop(xOffset: -110, scale: 1.35)
     )
 
     static let water = Ingredient(
