@@ -10,23 +10,27 @@ import SwiftUI
 struct SmoothieList: View {
     var smoothies: [Smoothie]
     
-    @State private var selection: Smoothie?
+    @State private var selection: Smoothie.ID?
     @EnvironmentObject private var model: FrutaModel
     
     var body: some View {
-        List(selection: $selection) {
-            ForEach(smoothies) { smoothie in
-                NavigationLink(
-                    destination: SmoothieView(smoothie: smoothie).environmentObject(model),
-                    tag: smoothie,
-                    selection: $selection
-                ) {
-                    SmoothieRow(smoothie: smoothie)
-                }
-                .tag(smoothie)
-                .onReceive(model.$selectedSmoothieID) { newValue in
-                    guard let smoothieID = newValue, let smoothie = Smoothie(for: smoothieID) else { return }
-                    selection = smoothie
+        ScrollViewReader { proxy in
+            List {
+                ForEach(smoothies) { smoothie in
+                    NavigationLink(
+                        destination: SmoothieView(smoothie: smoothie).environmentObject(model),
+                        tag: smoothie.id,
+                        selection: $selection
+                    ) {
+                        SmoothieRow(smoothie: smoothie)
+                    }
+                    .tag(smoothie)
+                    .onReceive(model.$selectedSmoothieID) { newValue in
+                        // Need to make sure the Smoothie exists.
+                        guard let smoothieID = newValue, let smoothie = Smoothie(for: smoothieID) else { return }
+                        proxy.scrollTo(smoothie.id)
+                        selection = smoothie.id
+                    }
                 }
             }
         }

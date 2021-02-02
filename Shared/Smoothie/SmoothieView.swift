@@ -76,11 +76,13 @@ struct SmoothieView: View {
                 #endif
             }
             .toolbar {
+                #if os(iOS)
                 ToolbarItem(placement: .confirmationAction) {
                     Button(action: { presentingOrderPlacedSheet = false }) {
                         Text("Done")
                     }
                 }
+                #endif
             }
             .environmentObject(model)
         }
