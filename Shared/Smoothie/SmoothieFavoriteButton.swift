@@ -8,7 +8,7 @@ A button to favorite a smoothie, can be placed in a toolbar.
 import SwiftUI
 
 struct SmoothieFavoriteButton: View {
-    @EnvironmentObject private var model: FrutaModel
+    @EnvironmentObject private var model: Model
     
     var smoothie: Smoothie?
     
@@ -19,10 +19,21 @@ struct SmoothieFavoriteButton: View {
     
     var body: some View {
         Button(action: toggleFavorite) {
-            Label("Favorite", systemImage: isFavorite ? "heart.fill" : "heart")
+            if isFavorite {
+                Label {
+                    Text("Remove from Favorites", comment: "Toolbar button/menu item to remove a smoothie from favorites")
+                } icon: {
+                    Image(systemName: "heart.fill")
+                }
+            } else {
+                Label {
+                    Text("Add to Favorites", comment: "Toolbar button/menu item to add a smoothie to favorites")
+                } icon: {
+                    Image(systemName: "heart")
+                }
+
+            }
         }
-        .foregroundColor(isFavorite ? .accentColor : nil)
-        .accessibility(label: Text("\(isFavorite ? "Remove from" : "Add to") Favorites"))
     }
     
     func toggleFavorite() {
@@ -36,6 +47,6 @@ struct SmoothieFavoriteButton_Previews: PreviewProvider {
         SmoothieFavoriteButton(smoothie: .berryBlue)
             .padding()
             .previewLayout(.sizeThatFits)
-            .environmentObject(FrutaModel())
+            .environmentObject(Model())
     }
 }

@@ -15,40 +15,47 @@ struct AppSidebarNavigation: View {
         case recipes
     }
 
-    @EnvironmentObject private var model: FrutaModel
+    @EnvironmentObject private var model: Model
+    @State private var presentingRewards: Bool = false
     @State private var selection: NavigationItem? = .menu
-    @State private var presentingRewards = false
-    
-    var sidebar: some View {
-        List(selection: $selection) {
-            NavigationLink(destination: SmoothieMenu(), tag: NavigationItem.menu, selection: $selection) {
-                Label("Menu", systemImage: "list.bullet")
-            }
-            .tag(NavigationItem.menu)
-            
-            NavigationLink(destination: FavoriteSmoothies(), tag: NavigationItem.favorites, selection: $selection) {
-                Label("Favorites", systemImage: "heart")
-            }
-            .tag(NavigationItem.favorites)
-        
-            NavigationLink(destination: RecipeList(), tag: NavigationItem.recipes, selection: $selection) {
-                Label("Recipes", systemImage: "book.closed")
-            }
-            .tag(NavigationItem.recipes)
-        }
-        .overlay(Pocket(presentingRewards: $presentingRewards), alignment: .bottom)
-        .listStyle(SidebarListStyle())
-    }
     
     var body: some View {
         NavigationView {
-            sidebar
+            List {
+                NavigationLink(tag: NavigationItem.menu, selection: $selection) {
+                    SmoothieMenu()
+                } label: {
+                    Label("Menu", systemImage: "list.bullet")
+                }
+                
+                NavigationLink(tag: NavigationItem.favorites, selection: $selection) {
+                    FavoriteSmoothies()
+                } label: {
+                    Label("Favorites", systemImage: "heart")
+                }
+            
+                NavigationLink(tag: NavigationItem.recipes, selection: $selection) {
+                    RecipeList()
+                } label: {
+                    Label("Recipes", systemImage: "book.closed")
+                }
+            }
+            .navigationTitle("Fruta")
+            .safeAreaInset(edge: .bottom, spacing: 0) {
+                Pocket()
+            }
             
             Text("Select a category")
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background()
+                .ignoresSafeArea()
             
             Text("Select a smoothie")
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background()
+                .ignoresSafeArea()
                 .toolbar {
                     SmoothieFavoriteButton(smoothie: nil)
                         .disabled(true)
@@ -57,51 +64,39 @@ struct AppSidebarNavigation: View {
     }
     
     struct Pocket: View {
-        @Binding var presentingRewards: Bool
-        
-        @EnvironmentObject private var model: FrutaModel
+        @State private var presentingRewards: Bool = false
+        @EnvironmentObject private var model: Model
         
         var body: some View {
-            VStack(alignment: .leading, spacing: 0) {
-                Divider()
-                Button(action: { presentingRewards = true }) {
-                    Label("Rewards", systemImage: "seal")
-                        .padding(6)
-                        .contentShape(Rectangle())
-                }
-                .accessibility(label: Text("Rewards"))
-                .padding(.vertical, 8)
-                .padding(.horizontal, 16)
-                .buttonStyle(PlainButtonStyle())
+            Button(action: { presentingRewards = true }) {
+                Label("Rewards", systemImage: "seal")
             }
+            .controlSize(.large)
+            .buttonStyle(.capsule)
+            .padding(.vertical, 8)
+            .padding(.horizontal, 16)
             .sheet(isPresented: $presentingRewards) {
-                #if os(iOS)
                 RewardsView()
+                    #if os(iOS)
+                    .overlay(alignment: .topTrailing) {
+                        Button(action: { presentingRewards = false }) {
+                            Text("Done", comment: "Button title to dismiss rewards sheet")
+                        }
+                        .font(.body.bold())
+                        .keyboardShortcut(.defaultAction)
+                        .buttonStyle(.capsule)
+                        .padding()
+                    }
+                    #else
+                    .frame(minWidth: 400, maxWidth: 600, minHeight: 400, maxHeight: 600)
                     .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
+                        ToolbarItem(placement: .confirmationAction) {
                             Button(action: { presentingRewards = false }) {
-                                Text("Done")
+                                Text("Done", comment: "Button title to dismiss rewards sheet")
                             }
                         }
                     }
-                    .environmentObject(model)
-                #else
-                VStack(spacing: 0) {
-                    RewardsView()
-                    Divider()
-                    HStack {
-                        Spacer()
-                        Button(action: { presentingRewards = false }) {
-                            Text("Done")
-                        }
-                        .keyboardShortcut(.defaultAction)
-                    }
-                    .padding()
-                    .background(VisualEffectBlur())
-                }
-                .frame(minWidth: 400, maxWidth: 600, minHeight: 400, maxHeight: 600)
-                .environmentObject(model)
-                #endif
+                    #endif
             }
         }
     }
@@ -110,14 +105,14 @@ struct AppSidebarNavigation: View {
 struct AppSidebarNavigation_Previews: PreviewProvider {
     static var previews: some View {
         AppSidebarNavigation()
-            .environmentObject(FrutaModel())
+            .environmentObject(Model())
     }
 }
 
-struct AppSidebarNavigation_Pocket_Previews: PreviewProvider {
+struct AppSidebarNavigationPocket_Previews: PreviewProvider {
     static var previews: some View {
-        AppSidebarNavigation.Pocket(presentingRewards: .constant(false))
-            .environmentObject(FrutaModel())
+        AppSidebarNavigation.Pocket()
+            .environmentObject(Model())
             .frame(width: 300)
     }
 }

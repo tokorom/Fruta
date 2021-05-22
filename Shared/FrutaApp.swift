@@ -9,14 +9,12 @@ import SwiftUI
 /// - Tag: SingleAppDefinitionTag
 @main
 struct FrutaApp: App {
-    @StateObject private var model = FrutaModel()
-    @StateObject private var store = Store()
+    @StateObject private var model = Model()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(model)
-                .environmentObject(store)
         }
         .commands {
             SidebarCommands()
